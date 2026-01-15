@@ -3,87 +3,160 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wuupi — Encuesta Educadores</title>
+  <title>🧭 Wuupi — Encuesta Educadores</title>
   <style>
     body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: auto; }
-    h2 { color: #2f4f4f; }
+    h1, h2 { color: #2f4f4f; }
     .bloque { display: none; margin-top: 10px; padding: 10px; border: 1px solid #ccc; }
     label { display: block; margin: 5px 0; }
     button { margin-top: 10px; padding: 10px 15px; }
+    textarea { width: 100%; height: 60px; }
+    input[type="text"] { width: 100%; }
   </style>
 </head>
 <body>
-  <h1>🧭 Wuupi — Encuesta para Educadores</h1>
-  <form id="wuupi-form" action="TU_URL_EXEC" method="post" target="hidden_iframe">
-    
-    <!-- 1. Dolor principal -->
-    <h2>1. Dolor principal</h2>
-    <label><input type="radio" name="dolor_principal" value="A"> Actividades de aprendizaje adaptadas</label>
-    <label><input type="radio" name="dolor_principal" value="B"> Interacción activa</label>
-    <label><input type="radio" name="dolor_principal" value="C"> Evaluar progreso</label>
-    <label><input type="radio" name="dolor_principal" value="D"> Comunicar avances</label>
-    
-    <!-- Bloques condicionales -->
-    <div id="bloque-A" class="bloque">
-      <h3>Actividades de aprendizaje adaptadas</h3>
-      <label>Tipo de contenido: 
-        <input type="checkbox" name="A_contenido" value="Lectura"> Lectura
-        <input type="checkbox" name="A_contenido" value="Matemáticas"> Matemáticas
-        <input type="checkbox" name="A_contenido" value="Comunicación"> Comunicación
-      </label>
-      <label>Dificultad al enseñar: <input type="text" name="A_dificultad"></label>
-      <label>¿Qué debería hacer Wuupi por ti? <textarea name="A_solucion"></textarea></label>
-    </div>
-    
-    <div id="bloque-B" class="bloque">
-      <h3>Interacción activa</h3>
-      <label>Tipo de interacción difícil: <input type="text" name="B_tipo"></label>
-      <label>¿Por qué no interactúan? <input type="text" name="B_causa"></label>
-      <label>¿Qué debería detectar Wuupi? <textarea name="B_solucion"></textarea></label>
-    </div>
-    
-    <div id="bloque-C" class="bloque">
-      <h3>Evaluar progreso</h3>
-      <label>Tipo de avance importante: <input type="text" name="C_tipo"></label>
-      <label>¿Qué te gustaría demostrar con datos? <input type="text" name="C_datos"></label>
-      <label>¿Qué te impide hacerlo hoy? <textarea name="C_impide"></textarea></label>
-    </div>
-    
-    <div id="bloque-D" class="bloque">
-      <h3>Comunicar avances</h3>
-      <label>Con quién es difícil comunicar: <input type="text" name="D_con_quien"></label>
-      <label>Tipo de evidencia útil: <input type="text" name="D_evidencia"></label>
-      <label>¿Qué debería generar Wuupi automáticamente? <textarea name="D_solucion"></textarea></label>
-    </div>
-    
-    <!-- 4. Cierre -->
-    <h2>4. Cierre</h2>
-    <label>Si Wuupi resolviera tu mayor problema, ¿qué cambiaría en tu día a día? <textarea name="cierre_1"></textarea></label>
-    <label>¿Hay algo que Wuupi no debería hacer? <textarea name="cierre_2"></textarea></label>
-    
-    <button type="submit">Enviar encuesta</button>
-  </form>
 
-  <!-- iframe oculto para enviar POST sin recargar -->
-  <iframe name="hidden_iframe" style="display:none;"></iframe>
+<h1>🧭 Wuupi — Encuesta para Educadores</h1>
 
-  <!-- Script para mostrar bloques condicionales -->
-  <script>
-    const form = document.getElementById('wuupi-form');
-    const bloques = {
-      A: document.getElementById('bloque-A'),
-      B: document.getElementById('bloque-B'),
-      C: document.getElementById('bloque-C'),
-      D: document.getElementById('bloque-D')
+<form id="wuupi-form">
+  <!-- 1. Dolor principal -->
+  <h2>1. Dolor principal</h2>
+  <label><input type="radio" name="dolor_principal" value="A"> Actividades de aprendizaje adaptadas</label>
+  <label><input type="radio" name="dolor_principal" value="B"> Interacción activa</label>
+  <label><input type="radio" name="dolor_principal" value="C"> Evaluar progreso</label>
+  <label><input type="radio" name="dolor_principal" value="D"> Comunicar avances</label>
+
+  <!-- Bloques condicionales -->
+  <div id="bloque-A" class="bloque">
+    <h3>A. Actividades de aprendizaje adaptadas</h3>
+    <label>Tipo de contenido:
+      <input type="checkbox" name="A_contenido" value="Lectura"> Lectura
+      <input type="checkbox" name="A_contenido" value="Matemáticas"> Matemáticas
+      <input type="checkbox" name="A_contenido" value="Comunicación"> Comunicación
+      <input type="checkbox" name="A_contenido" value="Habilidades sociales"> Habilidades sociales
+      <input type="checkbox" name="A_contenido" value="Autonomía"> Autonomía
+    </label>
+    <label>Dificultad al enseñar: <input type="text" name="A_dificultad"></label>
+    <label>Si Wuupi lo resolviera, ¿qué debería hacer por ti? <textarea name="A_solucion"></textarea></label>
+  </div>
+
+  <div id="bloque-B" class="bloque">
+    <h3>B. Interacción activa</h3>
+    <label>Tipo de interacción difícil:
+      <input type="checkbox" name="B_tipo" value="Movimientos grandes"> Movimientos grandes
+      <input type="checkbox" name="B_tipo" value="Movimientos finos"> Movimientos finos
+      <input type="checkbox" name="B_tipo" value="Señalar"> Señalar
+      <input type="checkbox" name="B_tipo" value="Elegir"> Elegir
+      <input type="checkbox" name="B_tipo" value="Mantener atención"> Mantener atención
+    </label>
+    <label>¿Por qué no interactúan? <textarea name="B_causa"></textarea></label>
+    <label>¿Qué debería detectar o registrar Wuupi? <textarea name="B_solucion"></textarea></label>
+  </div>
+
+  <div id="bloque-C" class="bloque">
+    <h3>C. Evaluar progreso</h3>
+    <label>Tipo de avance importante:
+      <input type="checkbox" name="C_tipo" value="Motor"> Motor
+      <input type="checkbox" name="C_tipo" value="Cognitivo"> Cognitivo
+      <input type="checkbox" name="C_tipo" value="Comunicación"> Comunicación
+      <input type="checkbox" name="C_tipo" value="Atención"> Atención
+      <input type="checkbox" name="C_tipo" value="Autonomía"> Autonomía
+    </label>
+    <label>¿Qué te gustaría demostrar con datos? <textarea name="C_datos"></textarea></label>
+    <label>¿Qué te impide hacerlo hoy? <textarea name="C_impide"></textarea></label>
+  </div>
+
+  <div id="bloque-D" class="bloque">
+    <h3>D. Comunicar avances</h3>
+    <label>Con quién es difícil comunicar:
+      <input type="checkbox" name="D_con_quien" value="Padres"> Padres
+      <input type="checkbox" name="D_con_quien" value="Escuela"> Escuela
+      <input type="checkbox" name="D_con_quien" value="Directivos"> Directivos
+      <input type="checkbox" name="D_con_quien" value="Terapeutas"> Terapeutas
+    </label>
+    <label>Tipo de evidencia útil:
+      <input type="checkbox" name="D_evidencia" value="Números"> Números
+      <input type="checkbox" name="D_evidencia" value="Videos"> Videos
+      <input type="checkbox" name="D_evidencia" value="Gráficas"> Gráficas
+      <input type="checkbox" name="D_evidencia" value="Ejemplos"> Ejemplos
+    </label>
+    <label>¿Qué debería generar Wuupi automáticamente? <textarea name="D_solucion"></textarea></label>
+  </div>
+
+  <!-- 4. Cierre -->
+  <h2>4. Cierre</h2>
+  <label>Si Wuupi resolviera tu mayor problema, ¿qué cambiaría en tu día a día? <textarea name="cierre_1"></textarea></label>
+  <label>¿Hay algo que Wuupi no debería hacer? <textarea name="cierre_2"></textarea></label>
+
+  <button type="submit">Enviar encuesta</button>
+</form>
+
+<script>
+  const form = document.getElementById('wuupi-form');
+  const bloques = {
+    A: document.getElementById('bloque-A'),
+    B: document.getElementById('bloque-B'),
+    C: document.getElementById('bloque-C'),
+    D: document.getElementById('bloque-D')
+  };
+
+  // Mostrar bloque según respuesta
+  form.dolor_principal.forEach(radio => {
+    radio.addEventListener('change', () => {
+      Object.values(bloques).forEach(b => b.style.display = 'none');
+      bloques[radio.value].style.display = 'block';
+    });
+  });
+
+  // Enviar datos a Google Sheets
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const dolor = form.dolor_principal.value;
+
+    const bloqueRespuestas = {};
+    if(dolor === 'A'){
+      bloqueRespuestas.contenidos = Array.from(form.querySelectorAll('input[name="A_contenido"]:checked')).map(i => i.value);
+      bloqueRespuestas.dificultad = form.A_dificultad.value;
+      bloqueRespuestas.solucion = form.A_solucion.value;
+    } else if(dolor === 'B'){
+      bloqueRespuestas.tipo = Array.from(form.querySelectorAll('input[name="B_tipo"]:checked')).map(i => i.value);
+      bloqueRespuestas.causa = form.B_causa.value;
+      bloqueRespuestas.solucion = form.B_solucion.value;
+    } else if(dolor === 'C'){
+      bloqueRespuestas.tipo = Array.from(form.querySelectorAll('input[name="C_tipo"]:checked')).map(i => i.value);
+      bloqueRespuestas.datos = form.C_datos.value;
+      bloqueRespuestas.impide = form.C_impide.value;
+    } else if(dolor === 'D'){
+      bloqueRespuestas.con_quien = Array.from(form.querySelectorAll('input[name="D_con_quien"]:checked')).map(i => i.value);
+      bloqueRespuestas.evidencia = Array.from(form.querySelectorAll('input[name="D_evidencia"]:checked')).map(i => i.value);
+      bloqueRespuestas.solucion = form.D_solucion.value;
+    }
+
+    const data = {
+      dolor_principal: dolor,
+      bloque_respuestas: bloqueRespuestas,
+      cierre_1: form.cierre_1.value,
+      cierre_2: form.cierre_2.value
     };
 
-    // Mostrar bloque según respuesta
-    form.dolor_principal.forEach(radio => {
-      radio.addEventListener('change', () => {
-        Object.values(bloques).forEach(b => b.style.display = 'none');
-        bloques[radio.value].style.display = 'block';
-      });
+    // ← Reemplaza TU_URL_EXEC con tu URL de Google Apps Script
+    fetch('https://script.google.com/macros/s/AKfycbyuXTktBm5xI5ASTv0Khx4qOsXttdAiGKkIGpHbgeaUkLEfUs3Eo63gPcuNKRtgNg4b8A/exec', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then(r => r.json())
+    .then(resp => {
+      alert('Formulario enviado con éxito!');
+      form.reset();
+      Object.values(bloques).forEach(b => b.style.display = 'none');
+    })
+    .catch(err => {
+      alert('Error al enviar el formulario.');
+      console.error(err);
     });
-  </script>
+  });
+</script>
+
 </body>
 </html>
